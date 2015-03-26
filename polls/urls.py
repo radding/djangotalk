@@ -10,7 +10,7 @@ urlpatterns = [
     url(r'^view/all/', viewAllPolls),
     url(r'^view/(?P<pollID>\d+)/$', viewPoll),
     url(r'^view/2/(?P<pollID>\d+)/$', viewPoll2),
-    url(r'^vote/(?P<ansID>\d+)/$', voteUpAns),
-    url(r'/', index),
+    url(r'^vote/(?P<ansID>\d+)/$', voteUpAns, name = "vote"),
+    url(r'$', index),
 ]
 

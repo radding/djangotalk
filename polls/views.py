@@ -19,15 +19,15 @@ def viewPoll(request, pollID):
     except Question.DoesNotExist:
         raise Http404("Question does not exist")
     answers = Answer.objects.filter(question = question)
-    return render(request, "polls/one.html",{"questions":question,"ans":answers})
+    return render(request, "polls/one.html",{"question":question,"ans":answers})
 
 def viewPoll2(request, pollID):
     question = get_object_or_404(Question, pk=pollID)
     answers = Answer.objects.filter(question = question)
-    return render(request, "polls/one.html",{"questions":question,"ans":answers})
+    return render(request, "polls/one.html",{"question":question,"ans":answers})
 
 def voteUpAns(request,ansID):
-    answer = question = get_object_or_404(Question, pk=ansID)
+    answer = get_object_or_404(Answer, pk=ansID)
     answer.votes += 1
     answer.save()
     return render(request, "polls/vote.html", {"ques":answer.question, "ans":answer})
